@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
         Move();
     }
     public void Move(){
-        Vector3 newVector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        Vector3 newVector = new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical")).normalized;
         playerTransform.Translate( newVector * speed * Time.deltaTime);
     }
 }
