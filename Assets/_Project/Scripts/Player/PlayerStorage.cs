@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerStorage : MonoBehaviour
 {
+    [SerializeField]
     private int wispsAmount = 0;
     void OnEnable()
     {

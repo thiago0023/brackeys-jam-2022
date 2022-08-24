@@ -5,10 +5,8 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     [SerializeField] private float interactRadius = 2f;
-    [SerializeField] private LayerMask interactableLayer;
-    [SerializeField] private float damping = 2f;
+    [SerializeField] private float rotateSpeed = 2f;
     [SerializeField] private float moveSpeed = 2f;
-
 
     void Update()
     {
@@ -22,7 +20,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform LookingForTarget()
     {
         Transform targetTransform = null;
-        Collider[] colliders = Physics.OverlapSphere(transform.position, interactRadius, interactableLayer);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, interactRadius);
         foreach (Collider collider in colliders) {
             if (collider.gameObject.CompareTag("Player")) {
                 targetTransform = collider.GetComponent<Transform>();
@@ -41,7 +39,7 @@ public class EnemyMovement : MonoBehaviour
         var lookPos = targetTransform.position - transform.position;
         lookPos.y = 0;
         var rotation = Quaternion.LookRotation(lookPos);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * damping);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * rotateSpeed);
     }
 
     private void TargetFollow()
