@@ -3,17 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class WispInteraction : MonoBehaviour
+public class WispInteraction : InteractionByTrigger
 {
     [SerializeField]
     private int addIntensity;
-    public static Action<int> IncreaseLight;
-    private void OnTriggerEnter(Collider other)
+    public static Action<int> AddLightIntensity;
+    // private void OnTriggerEnter(Collider other)
+    // {
+    //     if(other.CompareTag("Player"))
+    //     {
+    //         Interact();
+    //     }
+    // }
+
+    public string GetName()
     {
-        if(other.CompareTag("Player"))
-        {
-            IncreaseLight?.Invoke(addIntensity);
-            Destroy(this.gameObject);
-        }
+        return"Wisp Interaction";
+    }
+
+    public override void Interact()
+    {
+        Debug.Log(GetName());
+        AddLightIntensity?.Invoke(addIntensity);
+        Destroy(this.gameObject);
     }
 }
