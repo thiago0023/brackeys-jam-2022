@@ -7,7 +7,7 @@ public class WispInteraction : InteractionByTrigger
 {
     [SerializeField]
     private int addIntensity;
-    public static Action<int> AddLightIntensity;
+    public static Action<int> IncreaseLight;
     // private void OnTriggerEnter(Collider other)
     // {
     //     if(other.CompareTag("Player"))
@@ -24,7 +24,7 @@ public class WispInteraction : InteractionByTrigger
     public override void Interact()
     {
         Debug.Log(GetName());
-        AddLightIntensity?.Invoke(addIntensity);
+        IncreaseLight?.Invoke(addIntensity);
         Destroy(this.gameObject);
     }
 }
