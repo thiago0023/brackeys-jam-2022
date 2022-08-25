@@ -4,6 +4,5 @@ using UnityEngine;
 
 public class EnemyStorage : MonoBehaviour
 {
-    [SerializeField]
-    private int darknessAmount;
+    public int darknessAmount;
 }

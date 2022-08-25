@@ -6,10 +6,8 @@ using System;
 
 public class Hole : MonoBehaviour
 {
-    public static event Action FallInTheHole;
-
     private void OnTriggerEnter(Collider other)
     {
-        FallInTheHole?.Invoke();
+        PlayerActions.KillPlayer?.Invoke();
     }
 }

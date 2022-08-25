@@ -791,7 +791,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.2069741, y: 1}
+    m_SensorSize: {x: 2.0631163, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2095,6 +2095,8 @@ GameObject:
   - component: {fileID: 1905281219}
   - component: {fileID: 1905281220}
   - component: {fileID: 1905281221}
+  - component: {fileID: 1905281222}
+  - component: {fileID: 1905281223}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2127,9 +2129,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905281218}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.3
   m_Height: 3
   m_Direction: 1
   m_Center: {x: 0, y: 2.14, z: 0}
@@ -2146,10 +2148,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactRadius: 7
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  damping: 2
+  rotateSpeed: 2
+  moveSpeed: 2
+--- !u!114 &1905281222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905281218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1691c75977275e44eb4d3cb9c50e5e0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  darknessAmount: 0
+--- !u!114 &1905281223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1905281218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cef44170c701d941815221d2bd46a0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1911443119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2162,8 +2187,10 @@ GameObject:
   - component: {fileID: 1911443120}
   - component: {fileID: 1911443124}
   - component: {fileID: 1911443125}
+  - component: {fileID: 1911443126}
   - component: {fileID: 1911443123}
   - component: {fileID: 1911443122}
+  - component: {fileID: 1911443127}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -2243,7 +2270,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c90830fcd916149877d531ea1d7827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseSpeed: 6
+  decreaseSpeed: 1
 --- !u!114 &1911443125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2256,6 +2283,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b985386b1efa842a3e7f9d9c00248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wispsAmount: 0
+--- !u!114 &1911443126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911443119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf9b942a06d29fd45ad0694b87fb953b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &1911443127
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911443119}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 51828ad94843034448bbcc5747e9e5f0, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &2021809402
 GameObject:
   m_ObjectHideFlags: 0
@@ -2459,6 +2515,18 @@ PrefabInstance:
     - target: {fileID: 2591433752517905435, guid: bd12b7be84b60a647b9a580d1f78060f, type: 3}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591433752517905435, guid: bd12b7be84b60a647b9a580d1f78060f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591433752517905435, guid: bd12b7be84b60a647b9a580d1f78060f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591433752517905435, guid: bd12b7be84b60a647b9a580d1f78060f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2591433752517905435, guid: bd12b7be84b60a647b9a580d1f78060f, type: 3}
       propertyPath: m_LocalPosition.x
