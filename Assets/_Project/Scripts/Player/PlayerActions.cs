@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerActions : MonoBehaviour, IAudioController
+public class PlayerActions : CharacterSettings
 {
     public static Action KillPlayer;
     private Animation playeranimation;

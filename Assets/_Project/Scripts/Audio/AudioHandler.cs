@@ -19,6 +19,37 @@ public class AudioHandler : Singleton<AudioHandler>
         audioStorage = GetComponent<AudioStorage>();
     }
 
+    public void Play(string audioType, string audioName, bool loop = true, AudioSource _audioSource = null)
+    {
+        var audio = audioStorage.GetAudio(audioName).clip;
+        if(!audio) return;
+
+
+    }
+
+    private AudioSource SelectAudioSource(string audioType, AudioSource _audioSource)
+    {
+        var newAudioSource = _audioSource;
+
+        if(_audioSource != null) return _audioSource;
+
+        switch(audioType)
+        {
+            case "BGM":
+                newAudioSource = bgmAudioSource;
+                break;
+            case "BGS":
+                newAudioSource = bgsAudioSource;
+                break;
+            case "SFX":
+                newAudioSource = sfxAudioSource;
+                break;
+        }
+
+        return newAudioSource;
+    }
+
+
     public void PlayBGM(string audioName, bool loop = true)
     {
         var audio = audioStorage.GetAudio(audioName).clip;

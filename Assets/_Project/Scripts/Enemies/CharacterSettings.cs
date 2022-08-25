@@ -5,8 +5,8 @@ using UnityEngine;
 public class CharacterSettings : MonoBehaviour
 {
     [SerializeField]
-    protected List<string> audioList;
-    [SerializeField]
+    protected List<AudioSettings> audioList = new List<AudioSettings>();
+
     protected AudioSource audioSource;
     protected bool audioSourceFound = false;
 
