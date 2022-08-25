@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CompositeInteractable : MonoBehaviour, IInteractable
+public class CompositeInteractable : InteractionWithKey
 {
 
     [SerializeField] private List<GameObject> interactables = new List<GameObject>();
@@ -15,7 +15,7 @@ public class CompositeInteractable : MonoBehaviour, IInteractable
         return "Super interação!!!";
     }
 
-    public void Interact()
+    public override void Interact()
     {
         foreach (GameObject interactable in interactables) {
             if (interactable.TryGetComponent<IInteractable>(out IInteractable interactableComponent)) {

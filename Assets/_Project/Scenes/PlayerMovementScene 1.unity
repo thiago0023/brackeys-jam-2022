@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -791,7 +791,11 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
+<<<<<<< Updated upstream
     m_SensorSize: {x: 1.2069741, y: 1}
+=======
+    m_SensorSize: {x: 1.7777778, y: 1}
+>>>>>>> Stashed changes
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -2243,7 +2247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c90830fcd916149877d531ea1d7827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseSpeed: 6
+  decreaseSpeed: 11.17
 --- !u!114 &1911443125
 MonoBehaviour:
   m_ObjectHideFlags: 0
