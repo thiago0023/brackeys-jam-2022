@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class PuzzleObjective : MonoBehaviour
+public class PuzzleObjective : MonoBehaviour
 {
 
     protected PuzzleManager _puzzleManager;
@@ -12,13 +12,21 @@ public abstract class PuzzleObjective : MonoBehaviour
 
     public event EventHandler<bool> OnObjectiveStatusChange;
     
-    protected void AssignPuzzleManager(PuzzleManager puzzleManager)
+    public void AssignPuzzleManager(PuzzleManager puzzleManager)
     {
         _puzzleManager = puzzleManager;
+        _puzzleManager.OnPuzzleStart += PuzzleManager_OnPuzzleStart;
+        _puzzleManager.OnPuzzleSolved += PuzzleManager_OnPuzzleSolved;
     }
 
-    protected bool SetObjectiveActivation(bool active) => isActive = active;
-    protected bool ChangeObjectiveStatus(bool status) => isActive = status;
+    public bool SetObjectiveActivation(bool active) => isActive = active;
+    public void ChangeObjectiveStatus(bool status) {
+        isCompleted = status;
+        OnObjectiveStatusChange?.Invoke(this, status);
+    }
+    
+    public bool IsObjectiveCompleted() => isCompleted;
+    public bool IsActive() => isActive;
 
     private void PuzzleManager_OnPuzzleSolved(object sender, EventArgs e)
     {
@@ -28,8 +36,6 @@ public abstract class PuzzleObjective : MonoBehaviour
     private void PuzzleManager_OnPuzzleStart(object sender, EventArgs e)
     {
         SetObjectiveActivation(true);
-    }
-
-    
+    }    
     
 }
