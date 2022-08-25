@@ -2,22 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 public class SceneHandler : MonoBehaviour
 {
+    public static Action ReloadScene;
 
     private void OnEnable()
     {
-        Hole.FallInTheHole += Reload;
+        ReloadScene += OnReload;
     }
 
     private void OnDisable()
     {
-        Hole.FallInTheHole -= Reload;
+        ReloadScene -= OnReload;
     }
 
-    // Start is called before the first frame update
-    public void Reload(){
+    public void OnReload(){
         Scene scene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(scene.name);
     }
