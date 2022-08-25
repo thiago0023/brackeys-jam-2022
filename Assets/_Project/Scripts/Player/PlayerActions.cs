@@ -6,6 +6,17 @@ using System;
 public class PlayerActions : MonoBehaviour
 {
     public static Action KillPlayer;
+    private Animation playeranimation;
+    private CapsuleCollider playercollider;
+    private Rigidbody playerrigidbody;
+    private PlayerMovement playerMovement;
+
+    private void Awake() {
+        playeranimation = GetComponent<Animation>();
+        playercollider = GetComponent<CapsuleCollider>();
+        playerrigidbody = GetComponent<Rigidbody>();
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     void OnEnable()
     {
@@ -24,15 +35,19 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator ReloadDelay()
     {
-        PlayerIntensity.TurnOffLight?.Invoke();
-        var animation = GetComponent<Animation>();
-        var collider = GetComponent<CapsuleCollider>();
-        var rigidbody = GetComponent<Rigidbody>();
-        collider.enabled = false;
-        rigidbody.isKinematic = true;
-        print(animation);
-        animation.Play("playerDie");
+        DisablePlayer();
         yield return new WaitForSeconds(2f);
         SceneHandler.ReloadScene?.Invoke();
+    }
+
+    void DisablePlayer()
+    {
+        //TO DO mudar essa função para dentro do player intensity
+        PlayerIntensity.TurnOffLight?.Invoke();
+
+        playercollider.enabled = false;
+        playerMovement.enabled = false;
+        playerrigidbody.isKinematic = true;
+        playeranimation.Play("playerDie");
     }
 }
