@@ -13,7 +13,7 @@ public class AudioStorage : MonoBehaviour
 
     public List<Storage> audioList = new List<Storage>();
 
-    protected Storage GetAudio(string name)
+    public Storage GetAudio(string name)
     {
         var tempAudio = new Storage();
           for(int i=0; i<audioList.Count; i++){

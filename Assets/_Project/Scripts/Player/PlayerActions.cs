@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : MonoBehaviour, IAudioController
 {
     public static Action KillPlayer;
     private Animation playeranimation;
@@ -11,7 +11,7 @@ public class PlayerActions : MonoBehaviour
     private Rigidbody playerrigidbody;
     private PlayerMovement playerMovement;
 
-    private void Awake() {
+    protected void Awake() {
         playeranimation = GetComponent<Animation>();
         playercollider = GetComponent<CapsuleCollider>();
         playerrigidbody = GetComponent<Rigidbody>();
