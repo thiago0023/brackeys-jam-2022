@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerIntensity : MonoBehaviour
 {
+    public static Action TurnOffLight;
     [SerializeField]
     private float decreaseSpeed;
     private Light lightObject;
@@ -18,11 +20,13 @@ public class PlayerIntensity : MonoBehaviour
 
     void OnEnable()
     {
-        WispInteraction.IncreaseLight += IncreaseIntensity;
+        PlayerStorage.IncreaseLight += IncreaseIntensity;
+        TurnOffLight += OnTurnOff;
     }
     void OnDisable()
     {
-        WispInteraction.IncreaseLight -= IncreaseIntensity;
+        PlayerStorage.IncreaseLight -= IncreaseIntensity;
+        TurnOffLight -= OnTurnOff;
     }
 
     void IncreaseIntensity(int intensity)
@@ -33,6 +37,12 @@ public class PlayerIntensity : MonoBehaviour
     void DecreaseIntensity()
     {
         StartCoroutine(LightDecreaseIntensityEase());
+    }
+
+    void OnTurnOff()
+    {
+        lightObject.spotAngle = 0;
+        lightObject.intensity = 0;
     }
 
     IEnumerator LightIncreaseIntensityEase(float newIntensity)
