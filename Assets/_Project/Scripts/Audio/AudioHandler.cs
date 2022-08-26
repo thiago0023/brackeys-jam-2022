@@ -16,7 +16,7 @@ public class AudioHandler : Singleton<AudioHandler>
     private AudioStorage audioStorage;
 
     // TEMP START
-    private void Start()
+    private void Awake()
     {
         audioStorage = GetComponent<AudioStorage>();
         PlayAudio(audioSettings.audioType, audioSettings.audioName);
@@ -26,6 +26,11 @@ public class AudioHandler : Singleton<AudioHandler>
     {
         var audio = audioStorage.GetAudio(audioName).clip;
         if(!audio) return;
+
+        print("type: " + audioType);
+        print("name: " + audioName);
+        print("loop: " + loop);
+        print("source: " + audioSource);
 
         var selectedAudioSource = SelectAudioSource(audioType, audioSource);
         SetAudioClip(selectedAudioSource, audio);
