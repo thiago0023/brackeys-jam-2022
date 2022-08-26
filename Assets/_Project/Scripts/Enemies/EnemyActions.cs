@@ -10,6 +10,7 @@ public class EnemyActions : CharacterSettings
         base.Start();
         if(audioSourceFound)
         {
+            print(audioSource);
             AudioHandler.Instance.PlayAudio(audioList[0].audioType, audioList[0].audioName, true, audioSource);
         }
     }
