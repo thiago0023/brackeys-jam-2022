@@ -19,82 +19,49 @@ public class AudioHandler : Singleton<AudioHandler>
         audioStorage = GetComponent<AudioStorage>();
     }
 
-    public void Play(string audioType, string audioName, bool loop = true, AudioSource _audioSource = null)
+    public void PlayAudio(enAudioType audioType, string audioName, bool loop = true, AudioSource audioSource = null)
     {
         var audio = audioStorage.GetAudio(audioName).clip;
         if(!audio) return;
 
-
+        var selectedAudioSource = SelectAudioSource(audioType, audioSource);
+        SetAudioClip(selectedAudioSource, audio);
+        SetAudioLoop(selectedAudioSource, loop);
+        Play(selectedAudioSource);
     }
 
-    private AudioSource SelectAudioSource(string audioType, AudioSource _audioSource)
+    private AudioSource SelectAudioSource(enAudioType audioType, AudioSource audioSource)
     {
-        var newAudioSource = _audioSource;
-
-        if(_audioSource != null) return _audioSource;
+        if(audioSource != null) return audioSource;
+        var newAudioSource = audioSource;
 
         switch(audioType)
         {
-            case "BGM":
+            case enAudioType.BGM:
                 newAudioSource = bgmAudioSource;
                 break;
-            case "BGS":
+            case enAudioType.BGS:
                 newAudioSource = bgsAudioSource;
                 break;
-            case "SFX":
+            case enAudioType.SFX:
                 newAudioSource = sfxAudioSource;
                 break;
         }
-
         return newAudioSource;
     }
 
-
-    public void PlayBGM(string audioName, bool loop = true)
+    private void SetAudioClip(AudioSource audioSource, AudioClip audio)
     {
-        var audio = audioStorage.GetAudio(audioName).clip;
-        if(!audio) return;
-
-        bgmAudioSource.clip = audio;
-        bgmAudioSource.loop = loop;
-        bgmAudioSource.Play();
+        audioSource.clip = audio;
     }
 
-    public void PlayBGS(string audioName, bool loop = true)
+    private void SetAudioLoop(AudioSource audioSource, bool loop)
     {
-        var audio = audioStorage.GetAudio(audioName).clip;
-        if(!audio) return;
-
-        bgsAudioSource.clip = audio;
-        bgsAudioSource.loop = loop;
-        bgsAudioSource.Play();
-    }
-    
-    public void PlayBGS(string audioName, AudioSource _audioSource, bool loop = true)
-    {
-        var audio = audioStorage.GetAudio(audioName).clip;
-        if(!audio) return;
-
-        _audioSource.clip = audio;
-        _audioSource.loop = loop;
-        _audioSource.Play();
+        audioSource.loop = loop;
     }
 
-    public void PlaySFX(string audioName)
+    private void Play(AudioSource audioSource)
     {
-        var audio = audioStorage.GetAudio(audioName).clip;
-        if(!audio) return;
-
-        sfxAudioSource.clip = audio;
-        sfxAudioSource.Play();
-    }
-    
-    public void PlaySFX(string audioName, AudioSource _audioSource)
-    {
-        var audio = audioStorage.GetAudio(audioName).clip;
-        if(!audio) return;
-
-        _audioSource.clip = audio;
-        _audioSource.Play();
+        audioSource.Play();
     }
 }
