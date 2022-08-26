@@ -11,12 +11,15 @@ public class AudioHandler : Singleton<AudioHandler>
     private AudioSource bgsAudioSource;
     [SerializeField]
     private AudioSource sfxAudioSource;
-    public AudioStorage audioStorage;
+    [SerializeField]
+    private AudioSettings audioSettings;
+    private AudioStorage audioStorage;
 
     // TEMP START
     private void Start()
     {
         audioStorage = GetComponent<AudioStorage>();
+        PlayAudio(audioSettings.audioType, audioSettings.audioName);
     }
 
     public void PlayAudio(enAudioType audioType, string audioName, bool loop = true, AudioSource audioSource = null)
