@@ -16,6 +16,15 @@ public class PlayerActions : CharacterSettings
         playerMovement = GetComponent<PlayerMovement>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        if(audioSourceFound)
+        {
+            AudioHandler.Instance.PlayAudio(audioList[0].audioType, audioList[0].audioName, true, audioSource);
+        }
+    }
+
     void OnEnable()
     {
         KillPlayer += OnKillPlayer;
@@ -55,7 +64,7 @@ public class PlayerActions : CharacterSettings
     void PlayerDead()
     {
         PlayerIntensity.TurnOffLight?.Invoke();
-        playeranimation.Play("playerDie");
+        playeranimation.Play("player_die");
     }
 
     private void PlayerStorage_OnKillPlayer(object sender, System.EventArgs e)
