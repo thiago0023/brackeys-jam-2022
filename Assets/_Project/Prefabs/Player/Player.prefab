@@ -83,7 +83,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b985386b1efa842a3e7f9d9c00248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wispsAmount: 0
 --- !u!114 &1440963218120033384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,7 +95,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf9b942a06d29fd45ad0694b87fb953b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioList: []
+  audioList:
+  - audioName: player_idle
+    audioType: 0
+  - audioName: player_die
+    audioType: 0
 --- !u!111 &1440963218120033385
 Animation:
   m_ObjectHideFlags: 0
@@ -121,12 +124,12 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440963218120033393}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.08
   m_Pitch: 1
   Loop: 0
   Mute: 0
