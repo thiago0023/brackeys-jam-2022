@@ -10,11 +10,11 @@ public class WispStand : InteractionWithKey
     public  static event EventHandler OnWispStandDeactivated;
     public static event EventHandler<OnAnyWispStandArgs> OnAnyWispInteracted;
 
-    private bool hasWisp = false;
-    private PuzzleObjective _puzzleObjective;
-    private WispStand_Feedback _feedback;
+    protected bool hasWisp = false;
+    protected PuzzleObjective _puzzleObjective;
+    protected WispStand_Feedback _feedback;
 
-    private void Awake() {
+    protected virtual void Awake() {
         _puzzleObjective = GetComponent<PuzzleObjective>();
         _feedback = GetComponentInChildren<WispStand_Feedback>();
     }
@@ -31,10 +31,12 @@ public class WispStand : InteractionWithKey
 
     public override void Interact()
     {
+        if (!_puzzleObjective.IsActive()) return;
+
         OnAnyWispInteracted?.Invoke(this, new OnAnyWispStandArgs { wispStand = this, hasWisp = hasWisp });
     }
 
-    public void SetStandActivation(bool status) {
+    protected virtual void SetStandActivation(bool status) {
         hasWisp = status;
         if (status) {
             OnWispStandActivated?.Invoke(this, EventArgs.Empty);
