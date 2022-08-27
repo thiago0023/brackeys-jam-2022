@@ -8,6 +8,9 @@ public class PlayerIntensity : MonoBehaviour
     public static Action TurnOffLight;
     [SerializeField]
     private float decreaseSpeed;
+    [SerializeField]
+    private float decreaseSpeedFaster;
+    private float currenteDecreaseSpeed;
     private Light lightObject;
     private float luminositySteps = 0.06f;
     private float intensityBySpotSize = 20f;
@@ -22,12 +25,16 @@ public class PlayerIntensity : MonoBehaviour
     {
         PlayerStorage.OnIncreaseWisp += PlayerStorage_OnIncreaseWisp;
         PlayerStorage.OnDecreaseWisp += PlayerStorage_OnDecreaseWisp;
+        SlowAreaInteraction.OnInteract += SlowAreaInteraction_OnInteract;
+        SlowAreaInteraction.OnEndInteract += SlowAreaInteraction_OnEndInteract;
         TurnOffLight += OnTurnOff;
     }
     void OnDisable()
     {
         PlayerStorage.OnIncreaseWisp -= PlayerStorage_OnIncreaseWisp;
         PlayerStorage.OnDecreaseWisp -= PlayerStorage_OnDecreaseWisp;
+        SlowAreaInteraction.OnInteract -= SlowAreaInteraction_OnInteract;
+        SlowAreaInteraction.OnEndInteract -= SlowAreaInteraction_OnEndInteract;
         TurnOffLight -= OnTurnOff;
     }
 
@@ -62,7 +69,7 @@ public class PlayerIntensity : MonoBehaviour
     IEnumerator LightDecreaseIntensityEase()
     {
         yield return new WaitWhile(() => isIncreasing);
-        lightObject.spotAngle -= Time.deltaTime * decreaseSpeed;
+        lightObject.spotAngle -= Time.deltaTime * currenteDecreaseSpeed;
         lightObject.intensity = lightObject.spotAngle/intensityBySpotSize;
         if(lightObject.spotAngle > 1)
         {
@@ -83,5 +90,19 @@ public class PlayerIntensity : MonoBehaviour
     private void PlayerStorage_OnDecreaseWisp(object sender, EventArgs e)
     {
         Debug.Log("Criar lógica de diminuir a intensidade");
+    }
+
+    private void SlowAreaInteraction_OnInteract()
+    {
+        ChangeSpeed(true);
+    }
+    private void SlowAreaInteraction_OnEndInteract()
+    {
+        ChangeSpeed(false);
+    }
+
+    private void ChangeSpeed(bool isFater)
+    {
+        currenteDecreaseSpeed = isFater ? decreaseSpeedFaster : decreaseSpeed;
     }
 }
