@@ -20,12 +20,14 @@ public class PlayerIntensity : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerStorage.IncreaseLight += IncreaseIntensity;
+        PlayerStorage.OnIncreaseWisp += PlayerStorage_OnIncreaseWisp;
+        PlayerStorage.OnDecreaseWisp += PlayerStorage_OnDecreaseWisp;
         TurnOffLight += OnTurnOff;
     }
     void OnDisable()
     {
-        PlayerStorage.IncreaseLight -= IncreaseIntensity;
+        PlayerStorage.OnIncreaseWisp -= PlayerStorage_OnIncreaseWisp;
+        PlayerStorage.OnDecreaseWisp -= PlayerStorage_OnDecreaseWisp;
         TurnOffLight -= OnTurnOff;
     }
 
@@ -71,5 +73,15 @@ public class PlayerIntensity : MonoBehaviour
             lightObject.enabled = false;
             print("Player's Dead");
         }
+    }
+
+    private void PlayerStorage_OnIncreaseWisp(object sender, EventArgs e)
+    {
+        IncreaseIntensity(1);
+    }
+
+    private void PlayerStorage_OnDecreaseWisp(object sender, EventArgs e)
+    {
+        Debug.Log("Criar lógica de diminuir a intensidade");
     }
 }

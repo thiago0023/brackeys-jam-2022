@@ -10,7 +10,7 @@ public class CompositeInteractable : InteractionWithKey
     private void Awake() {
         
     }
-    public string GetName()
+    public override string GetName()
     {
         return "Super interação!!!";
     }

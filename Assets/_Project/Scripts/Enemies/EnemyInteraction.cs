@@ -13,15 +13,15 @@ public class EnemyInteraction : InteractionByTrigger
         darknessAmount = enemyStorage.darknessAmount;
     }
 
-    void OnEnable()
-    {
-        PlayerStorage.WispsAmountReturn += OnReceiveWispsAmount;
-    }
+    // void OnEnable()
+    // {
+    //     PlayerStorage.WispsAmountReturn += OnReceiveWispsAmount;
+    // }
 
-    void OnDisable()
-    {
-        PlayerStorage.WispsAmountReturn -= OnReceiveWispsAmount;
-    }
+    // void OnDisable()
+    // {
+    //     PlayerStorage.WispsAmountReturn -= OnReceiveWispsAmount;
+    // }
 
     public override string GetName()
     {
@@ -31,7 +31,7 @@ public class EnemyInteraction : InteractionByTrigger
     public override void Interact()
     {
         Debug.Log(GetName());
-        PlayerStorage.GetWispsAmount?.Invoke();
+        // PlayerStorage.GetWispsAmount?.Invoke();
     }
 
     private void OnReceiveWispsAmount(int amount)

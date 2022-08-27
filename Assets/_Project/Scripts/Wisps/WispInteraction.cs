@@ -7,6 +7,7 @@ public class WispInteraction : InteractionByTrigger
 {
     [SerializeField]
     private int addIntensity;
+    public static event EventHandler OnInteracted;
 
     public override string GetName()
     {
@@ -16,7 +17,7 @@ public class WispInteraction : InteractionByTrigger
     public override void Interact()
     {
         Debug.Log(GetName());
-        PlayerStorage.IncreaseLight?.Invoke(addIntensity);
+        OnInteracted?.Invoke(this, EventArgs.Empty);
         Destroy(this.gameObject);
     }
 }
