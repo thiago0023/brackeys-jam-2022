@@ -55,7 +55,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bb710f5ee1df64bbd53ab5bd98574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   slowSpeed: 3
 --- !u!114 &1440963218120033386
 MonoBehaviour:
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c90830fcd916149877d531ea1d7827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseSpeed: 1
+  decreaseSpeed: 1.17
   decreaseSpeedFaster: 10
 --- !u!114 &1440963218120033387
 MonoBehaviour:
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66b985386b1efa842a3e7f9d9c00248e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wispsAmount: 0
+  wispsAmount: 1
 --- !u!114 &1440963218120033384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,10 +123,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.2558981
   m_Height: 3
   m_Direction: 1
-  m_Center: {x: 0, y: 2.14, z: 0}
+  m_Center: {x: 0, y: 2, z: 0}
 --- !u!111 &1440963218120033385
 Animation:
   m_ObjectHideFlags: 0
