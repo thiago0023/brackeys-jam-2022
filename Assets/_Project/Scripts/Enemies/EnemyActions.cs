@@ -48,7 +48,7 @@ public class EnemyActions : CharacterSettings
 
         enemyAnimation.Play("enemy_1_die");
         DisableEnemy();
-        yield return new WaitForSeconds(0.8f);
+        yield return new WaitForSeconds(0.6f);
         KillEnemy();
     }
 

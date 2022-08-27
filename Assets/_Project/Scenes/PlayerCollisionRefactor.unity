@@ -218,7 +218,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &158452934
 Transform:
@@ -5700,7 +5700,7 @@ MonoBehaviour:
   - name: enemy_wall
     clip: {fileID: 8300000, guid: 9af8e40c6c6eb7642a53c115c5d654c2, type: 3}
   - name: player_idle
-    clip: {fileID: 8300000, guid: f989b1c64c0e7db4ca024b2c4a4e4ad7, type: 3}
+    clip: {fileID: 8300000, guid: 5be613888714f2341803c1570d55ec03, type: 3}
   - name: player_die
     clip: {fileID: 8300000, guid: 8ea42b1d692f83d419593b9eb5d3efed, type: 3}
   - name: wisps_idle
@@ -6300,7 +6300,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5392934733697998101, guid: d6821715b586bac43a6673148a9fa95c, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 5392934733697998101, guid: d6821715b586bac43a6673148a9fa95c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6724,7 +6724,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1440963218120033382, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
       propertyPath: m_Volume
-      value: 0.04
+      value: 0.08
       objectReference: {fileID: 0}
     - target: {fileID: 1440963218120033384, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
       propertyPath: audioList.Array.size
