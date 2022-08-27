@@ -35,7 +35,6 @@ public class AudioHandler : Singleton<AudioHandler>
 
     private AudioSource SelectAudioSource(enAudioType audioType, AudioSource audioSource)
     {
-        print(audioSource);
         if(audioSource != null) return audioSource;
         var newAudioSource = audioSource;
 
