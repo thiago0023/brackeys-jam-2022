@@ -561,7 +561,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzleCompleteExample
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7098312919929654385, guid: b797ea34e67e5c5478e5bd1f5eba531e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b797ea34e67e5c5478e5bd1f5eba531e, type: 3}
 --- !u!4 &5656102387983172023 stripped
 Transform:
