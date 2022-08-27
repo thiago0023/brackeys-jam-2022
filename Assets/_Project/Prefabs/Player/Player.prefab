@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bb710f5ee1df64bbd53ab5bd98574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 10
 --- !u!114 &1440963218120033386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,8 +347,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 1440963218120033391}
     m_Modifications:
     - target: {fileID: 1067032847, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067032847, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
       propertyPath: InitialModule.maxNumParticles
       value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067032847, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1067032847, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: EmissionModule.rateOverDistance.scalar
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 7057047480143326364, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.508
       objectReference: {fileID: 0}
     - target: {fileID: 7057686096796856742, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
       propertyPath: m_RootOrder
@@ -356,7 +372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7057686096796856742, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.127
       objectReference: {fileID: 0}
     - target: {fileID: 7057686096796856742, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
       propertyPath: m_LocalPosition.y
@@ -397,6 +413,26 @@ PrefabInstance:
     - target: {fileID: 7060163589264260280, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
       propertyPath: m_Name
       value: Will-O-Wisp with Trail Variant (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7150912514931322260, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151054794920760486, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151166357354420636, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151166357354420636, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7151166357354420636, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7c2ac9c44d6f7e4c8fe582c264bdb47, type: 3}
