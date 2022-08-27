@@ -11,8 +11,6 @@ public class PlayerStorage : MonoBehaviour
     public static event EventHandler<OnAnyWispStandArgs> WispStand_OnDecreaseWispAmount;
     public static event EventHandler PlayerAction_OnKillPlayer;
     public static event EventHandler<OnEnemyInteractArgs> EnemyActions_OnKillEnemy;
-
-    [SerializeField]
     private int wispsAmount;
 
     void OnEnable()
