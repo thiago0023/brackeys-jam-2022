@@ -13,12 +13,11 @@ GameObject:
   - component: {fileID: 1440963218120033386}
   - component: {fileID: 1440963218120033387}
   - component: {fileID: 1440963218120033384}
-  - component: {fileID: 1440963218120033389}
-  - component: {fileID: 1440963218120033388}
   - component: {fileID: 1440963218120033385}
   - component: {fileID: 1440963218120033382}
   - component: {fileID: 1440963218120033383}
   - component: {fileID: 5004540847744037140}
+  - component: {fileID: 1911443132}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -55,8 +54,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69bb710f5ee1df64bbd53ab5bd98574d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 6
   slowSpeed: 3
+  gravity: 0.5
 --- !u!114 &1440963218120033386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c90830fcd916149877d531ea1d7827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseSpeed: 1
+  decreaseSpeed: 1.17
   decreaseSpeedFaster: 10
 --- !u!114 &1440963218120033387
 MonoBehaviour:
@@ -97,36 +97,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioList: []
---- !u!54 &1440963218120033389
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440963218120033393}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!136 &1440963218120033388
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440963218120033393}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 3
-  m_Direction: 1
-  m_Center: {x: 0, y: 2.14, z: 0}
 --- !u!111 &1440963218120033385
 Animation:
   m_ObjectHideFlags: 0
@@ -265,6 +235,24 @@ MonoBehaviour:
   interactableLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!143 &1911443132
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440963218120033393}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 3
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 2.14, z: 0}
 --- !u!1 &1440963218413981811
 GameObject:
   m_ObjectHideFlags: 0

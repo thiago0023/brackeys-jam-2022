@@ -7,14 +7,12 @@ public class PlayerActions : CharacterSettings
 {
     public static Action KillPlayer;
     private Animation playeranimation;
-    private CapsuleCollider playercollider;
-    private Rigidbody playerrigidbody;
+    private CharacterController characterController;
     private PlayerMovement playerMovement;
 
     protected void Awake() {
         playeranimation = GetComponent<Animation>();
-        playercollider = GetComponent<CapsuleCollider>();
-        playerrigidbody = GetComponent<Rigidbody>();
+        characterController = GetComponent<CharacterController>();
         playerMovement = GetComponent<PlayerMovement>();
     }
 
@@ -40,18 +38,23 @@ public class PlayerActions : CharacterSettings
     IEnumerator ReloadDelay()
     {
         DisablePlayer();
+        PlayerDead();
         yield return new WaitForSeconds(2f);
         SceneHandler.ReloadScene?.Invoke();
     }
 
     void DisablePlayer()
     {
-        //TO DO mudar essa função para dentro do player intensity
-        PlayerIntensity.TurnOffLight?.Invoke();
-
-        playercollider.enabled = false;
         playerMovement.enabled = false;
-        playerrigidbody.isKinematic = true;
+    }
+    void EnablePlayer()
+    {
+        playerMovement.enabled = true;
+    }
+
+    void PlayerDead()
+    {
+        PlayerIntensity.TurnOffLight?.Invoke();
         playeranimation.Play("playerDie");
     }
 

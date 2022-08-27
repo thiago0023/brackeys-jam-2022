@@ -6,12 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     private Transform playerTransform;
 
-    [SerializeField]
-    private float speed;
-    [SerializeField]
-    private float slowSpeed;
+    [SerializeField] private float speed;
+    [SerializeField] private float slowSpeed;
     private float currentSpeed;
     private Camera cam;
+    private CharacterController _controller;
+    [SerializeField] private float gravity = 0.5f;
     void Awake()
     {
         currentSpeed = speed;
@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
+        _controller = GetComponent<CharacterController>();
     }
 
     private void OnEnable() {
@@ -46,10 +47,11 @@ public class PlayerMovement : MonoBehaviour
         forward.y = 0f;
         right.y = 0f;
         forward.Normalize();
-        right.Normalize();
-        var desiredMoveDirection = forward * verticalAxis + right * horizontalAxis;
+        right.Normalize();    
 
-        playerTransform.Translate(desiredMoveDirection * currentSpeed * Time.deltaTime);
+        var desiredMoveDirection = forward * verticalAxis + right * horizontalAxis;
+        desiredMoveDirection.y = gravity * (-1);
+        _controller.Move(desiredMoveDirection * Time.deltaTime * currentSpeed);
     }
     private void SlowAreaInteraction_OnInteract()
     {
