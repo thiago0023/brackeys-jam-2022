@@ -55,16 +55,22 @@ public class PlayerActions : CharacterSettings
     void DisablePlayer()
     {
         playerMovement.enabled = false;
+        characterController.enabled = false;
     }
     void EnablePlayer()
     {
         playerMovement.enabled = true;
+        characterController.enabled = true;
     }
 
     void PlayerDead()
     {
         PlayerIntensity.TurnOffLight?.Invoke();
         playeranimation.Play("player_die");
+        if(audioSourceFound)
+        {
+            AudioHandler.Instance.PlayAudio(audioList[1].audioType, audioList[1].audioName, false);
+        }
     }
 
     private void PlayerStorage_OnKillPlayer(object sender, System.EventArgs e)

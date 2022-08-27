@@ -5676,7 +5676,7 @@ MonoBehaviour:
   bgsAudioSource: {fileID: 821984934}
   sfxAudioSource: {fileID: 821984933}
   audioSettings:
-    audioName: Start Music
+    audioName: music_default
     audioType: 2
 --- !u!114 &821984936
 MonoBehaviour:
@@ -5700,7 +5700,7 @@ MonoBehaviour:
   - name: enemy_wall
     clip: {fileID: 8300000, guid: 9af8e40c6c6eb7642a53c115c5d654c2, type: 3}
   - name: player_idle
-    clip: {fileID: 8300000, guid: 97eecdf5af4c17346a97b312a8ab5845, type: 3}
+    clip: {fileID: 8300000, guid: a8a8c5f6b05d6db4d88b1252fc992683, type: 3}
   - name: player_die
     clip: {fileID: 8300000, guid: 8ea42b1d692f83d419593b9eb5d3efed, type: 3}
   - name: wisps_idle
@@ -6722,6 +6722,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1440963218120033384, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
+      propertyPath: audioList.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1440963218120033384, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
+      propertyPath: audioList.Array.data[1].audioName
+      value: player_die
+      objectReference: {fileID: 0}
     - target: {fileID: 1440963218120033391, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
       propertyPath: m_RootOrder
       value: 1
