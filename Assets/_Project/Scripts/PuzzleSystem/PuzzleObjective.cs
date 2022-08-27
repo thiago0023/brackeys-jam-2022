@@ -10,27 +10,39 @@ public class PuzzleObjective : MonoBehaviour
     protected bool isActive;
     protected bool isCompleted;
 
-    public event EventHandler<bool> OnObjectiveStatusChange;
+    public static event EventHandler<OnObjectStatusChangeArgs> OnObjectiveStatusChange;
     
+    private void OnEnable() {
+        PuzzleManager.OnPuzzleSolved += PuzzleManager_OnPuzzleSolved;
+    }
+
+    private void OnDisable() {
+        PuzzleManager.OnPuzzleSolved -= PuzzleManager_OnPuzzleSolved;
+    }
+
     public void AssignPuzzleManager(PuzzleManager puzzleManager)
     {
         _puzzleManager = puzzleManager;
         _puzzleManager.OnPuzzleStart += PuzzleManager_OnPuzzleStart;
-        _puzzleManager.OnPuzzleSolved += PuzzleManager_OnPuzzleSolved;
     }
 
     public bool SetObjectiveActivation(bool active) => isActive = active;
     public void ChangeObjectiveStatus(bool status) {
         isCompleted = status;
-        OnObjectiveStatusChange?.Invoke(this, status);
+        OnObjectiveStatusChange?.Invoke(this, new OnObjectStatusChangeArgs{
+            status = status,
+            puzzleManager = _puzzleManager
+        });
     }
     
     public bool IsObjectiveCompleted() => isCompleted;
     public bool IsActive() => isActive;
 
-    private void PuzzleManager_OnPuzzleSolved(object sender, EventArgs e)
+    private void PuzzleManager_OnPuzzleSolved(object sender, PuzzleManager puzzleManager)
     {
-        SetObjectiveActivation(false);
+        if (puzzleManager == _puzzleManager) {
+            SetObjectiveActivation(false);
+        }
     }
 
     private void PuzzleManager_OnPuzzleStart(object sender, EventArgs e)
@@ -38,4 +50,10 @@ public class PuzzleObjective : MonoBehaviour
         SetObjectiveActivation(true);
     }    
     
+}
+
+public class OnObjectStatusChangeArgs: EventArgs
+{
+    public bool status;
+    public PuzzleManager puzzleManager;
 }
