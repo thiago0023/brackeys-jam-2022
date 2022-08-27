@@ -10,7 +10,7 @@ public class CompositeInteractable : InteractionWithKey
     private void Awake() {
         
     }
-    public string GetName()
+    public override string GetName()
     {
         return "Super interação!!!";
     }
@@ -22,5 +22,15 @@ public class CompositeInteractable : InteractionWithKey
                 interactableComponent.Interact();
             }
         }
+    }
+
+    public override void BeginInteraction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void EndInteraction()
+    {
+        throw new System.NotImplementedException();
     }
 }

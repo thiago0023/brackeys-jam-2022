@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-
-public class Hole : InteractionByTrigger
+public class SlowAreaInteraction : InteractionByTrigger
 {
+    public static event Action OnInteract;
+    public static event Action OnEndInteract;
+
     public override void BeginInteraction()
     {
         throw new NotImplementedException();
@@ -13,11 +15,11 @@ public class Hole : InteractionByTrigger
 
     public override void EndInteraction()
     {
-        throw new NotImplementedException();
+        OnEndInteract?.Invoke();
     }
 
     public override void Interact()
     {
-        PlayerActions.KillPlayer?.Invoke();
+        OnInteract?.Invoke();
     }
 }

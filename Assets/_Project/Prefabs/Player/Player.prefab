@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 1440963218120033385}
   - component: {fileID: 1440963218120033382}
   - component: {fileID: 1440963218120033383}
+  - component: {fileID: 5004540847744037140}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -55,6 +56,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  slowSpeed: 3
 --- !u!114 &1440963218120033386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   decreaseSpeed: 1
+  decreaseSpeedFaster: 10
 --- !u!114 &1440963218120033387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +248,23 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1440963218120033393}
   m_Enabled: 1
+--- !u!114 &5004540847744037140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1440963218120033393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518df8a5f75a28d4abe885e84b0d4fe6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactKey: 102
+  interactRadius: 2.61
+  interactableLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!1 &1440963218413981811
 GameObject:
   m_ObjectHideFlags: 0
