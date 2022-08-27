@@ -221,7 +221,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -433,7 +433,7 @@ MonoBehaviour:
   - name: wisps_drop
     clip: {fileID: 8300000, guid: 1218d8cfddc11ac4b88bcb67f07b6443, type: 3}
   - name: bgs_default
-    clip: {fileID: 8300000, guid: 6cb33e60c545f234db0d4934b55b381e, type: 3}
+    clip: {fileID: 8300000, guid: d3e2012d53aee524db9f47ab9edd3682, type: 3}
   - name: music_default
     clip: {fileID: 8300000, guid: 1218d8cfddc11ac4b88bcb67f07b6443, type: 3}
   - name: enemy_wall_idle
@@ -456,5 +456,7 @@ MonoBehaviour:
   bgsAudioSource: {fileID: 3906176239062807756}
   sfxAudioSource: {fileID: 3906176239062807759}
   audioSettings:
-    audioName: music_default
+  - audioName: music_default
     audioType: 2
+  - audioName: bgs_default
+    audioType: 1
