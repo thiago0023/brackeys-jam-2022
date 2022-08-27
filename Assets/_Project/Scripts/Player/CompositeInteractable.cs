@@ -23,4 +23,14 @@ public class CompositeInteractable : InteractionWithKey
             }
         }
     }
+
+    public override void BeginInteraction()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public override void EndInteraction()
+    {
+        throw new System.NotImplementedException();
+    }
 }

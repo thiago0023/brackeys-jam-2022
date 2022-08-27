@@ -59,6 +59,15 @@ public class WispStand : InteractionWithKey
         SetStandActivation(e.hasWisp);
     }
 
+    public override void BeginInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void EndInteraction()
+    {
+        throw new NotImplementedException();
+    }
 }
 
 public class OnAnyWispStandArgs : EventArgs

@@ -21,11 +21,13 @@ public class PlayerActions : CharacterSettings
     void OnEnable()
     {
         KillPlayer += OnKillPlayer;
+        PlayerStorage.PlayerAction_OnKillPlayer += PlayerStorage_OnKillPlayer;
     }
 
     void OnDisable()
     {
         KillPlayer -= OnKillPlayer;
+        PlayerStorage.PlayerAction_OnKillPlayer -= PlayerStorage_OnKillPlayer;
     }
 
     void OnKillPlayer()
@@ -49,5 +51,10 @@ public class PlayerActions : CharacterSettings
         playerMovement.enabled = false;
         playerrigidbody.isKinematic = true;
         playeranimation.Play("playerDie");
+    }
+
+    private void PlayerStorage_OnKillPlayer(object sender, System.EventArgs e)
+    {
+        OnKillPlayer();
     }
 }

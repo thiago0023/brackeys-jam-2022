@@ -5,23 +5,13 @@ using System;
 
 public class EnemyInteraction : InteractionByTrigger
 {
-    public static Action<int> IncreaseLight;
+    public static event EventHandler<OnEnemyInteractArgs> OnInteract;
     private int darknessAmount;
     void Start()
     {
         var enemyStorage = GetComponent<EnemyStorage>();
         darknessAmount = enemyStorage.darknessAmount;
     }
-
-    // void OnEnable()
-    // {
-    //     PlayerStorage.WispsAmountReturn += OnReceiveWispsAmount;
-    // }
-
-    // void OnDisable()
-    // {
-    //     PlayerStorage.WispsAmountReturn -= OnReceiveWispsAmount;
-    // }
 
     public override string GetName()
     {
@@ -31,18 +21,26 @@ public class EnemyInteraction : InteractionByTrigger
     public override void Interact()
     {
         Debug.Log(GetName());
-        // PlayerStorage.GetWispsAmount?.Invoke();
+        var enemy = GetComponent<EnemyActions>();
+        OnInteract?.Invoke(this, new OnEnemyInteractArgs { 
+            enemy = enemy, 
+            darknessAmount = darknessAmount 
+        });
     }
 
-    private void OnReceiveWispsAmount(int amount)
+    public override void BeginInteraction()
     {
-        if(amount > darknessAmount)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            PlayerActions.KillPlayer?.Invoke();
-        }
+        throw new NotImplementedException();
     }
+
+    public override void EndInteraction()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class OnEnemyInteractArgs : EventArgs
+{
+    public EnemyActions enemy;
+    public int darknessAmount;
 }
