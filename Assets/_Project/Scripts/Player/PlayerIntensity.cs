@@ -89,9 +89,9 @@ public class PlayerIntensity : MonoBehaviour
         OnLightOff?.Invoke();
     }
 
-    private void PlayerStorage_OnIncreaseWisp(object sender, EventArgs e)
+    private void PlayerStorage_OnIncreaseWisp(object sender, int intensity)
     {
-        IncreaseIntensity(1);
+        IncreaseIntensity(intensity);
     }
 
     private void PlayerStorage_OnDecreaseWisp(object sender, EventArgs e)
