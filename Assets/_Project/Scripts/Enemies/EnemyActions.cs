@@ -45,8 +45,8 @@ public class EnemyActions : CharacterSettings
 
     IEnumerator ReloadDelay()
     {
-
         enemyAnimation.Play("enemy_1_die");
+        
         DisableEnemy();
         yield return new WaitForSeconds(0.6f);
         KillEnemy();
@@ -54,6 +54,6 @@ public class EnemyActions : CharacterSettings
 
     void DisableEnemy()
     {
-        enemyMovement.enabled = false;
+        if(enemyMovement) enemyMovement.enabled = false;
     }
 }
