@@ -12,7 +12,7 @@ public class CameraSettings : MonoBehaviour
         vcam = GetComponent<CinemachineFreeLook>();
     }
     // Start is called before the first frame update
-    private void OnEnable() {
+    private void Start() {
         if (tPlayer == null)
         {
             tPlayer = GameObject.FindWithTag("Player");
