@@ -5,45 +5,72 @@ using System;
 
 public class PlayerStorage : MonoBehaviour
 {
-    public static Action<int> IncreaseLight;
-    public static Action<int> DecreaseLight;
-    public static Action<int> WispsAmountReturn;
-    public static Action GetWispsAmount;
-    public static Func<bool> CanPlayerGiveWisps;
+    public static event EventHandler OnIncreaseWisp;
+    public static event EventHandler OnDecreaseWisp;
+    public static event EventHandler<OnAnyWispStandArgs> WispStand_OnIncreaseWispAmount;
+    public static event EventHandler<OnAnyWispStandArgs> WispStand_OnDecreaseWispAmount;
 
     [SerializeField]
     private int wispsAmount;
 
     void OnEnable()
     {
-        IncreaseLight += IncreaseLightAmount;
-        DecreaseLight += DecreaseLightAmount;
-        GetWispsAmount += OnGetWipsAmout;
-        CanPlayerGiveWisps += PlayerStorage_CanPlayerGiveWisps;
+        WispStand.OnAnyWispInteracted += WispStand_OnStandInteracted;
+        WispInteraction.OnInteracted += WispInteraction_OnInteracted;
     }
     void OnDisable()
     {
-        IncreaseLight -= IncreaseLightAmount;
-        GetWispsAmount -= OnGetWipsAmout;
-        CanPlayerGiveWisps += PlayerStorage_CanPlayerGiveWisps;
+        WispStand.OnAnyWispInteracted -= WispStand_OnStandInteracted;
+        WispInteraction.OnInteracted -= WispInteraction_OnInteracted;
     }
 
-    private void IncreaseLightAmount(int intensity)
+    private void IncreaseWispAmount(int amount)
     {
-        wispsAmount++;
-    }
-    private void DecreaseLightAmount(int intensity)
-    {
-        wispsAmount--;
+        wispsAmount += amount;
+        OnIncreaseWisp?.Invoke(this, EventArgs.Empty);
     }
 
-    private void OnGetWipsAmout()
+    private bool TryDecreaseAmount(int amount)
     {
-        WispsAmountReturn?.Invoke(wispsAmount);
+        if (!CanSpendWisps(amount)) return false;
+
+        wispsAmount -= amount;
+        OnDecreaseWisp?.Invoke(this, EventArgs.Empty);
+        return true;
     }
 
-    public bool PlayerStorage_CanPlayerGiveWisps()
+    private void WispStand_OnStandInteracted(object sender, OnAnyWispStandArgs e)
     {
-        return wispsAmount > 0;
+        if (e.hasWisp)
+        {
+            IncreaseWispAmount(1);
+            e.hasWisp = false;
+            WispStand_OnIncreaseWispAmount?.Invoke(this, e);
+        }
+        else
+        {
+            if (!TryDecreaseAmount(1)) return;
+            e.hasWisp = true;
+            WispStand_OnDecreaseWispAmount?.Invoke(this, e);
+        }
+    }
+    private void DecreaseWispAmount(int amount)
+    {
+        wispsAmount -= amount;
+        OnDecreaseWisp?.Invoke(this, EventArgs.Empty);
+    }
+
+    private bool CanSpendWisps(int amount)
+    {
+        if (wispsAmount >= amount)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    private void WispInteraction_OnInteracted(object sender, EventArgs e)
+    {
+        IncreaseWispAmount(1);
     }
 }
