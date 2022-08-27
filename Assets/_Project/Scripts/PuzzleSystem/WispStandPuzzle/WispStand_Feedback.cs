@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class WispStand_Feedback : MonoBehaviour
 {
-    private MeshRenderer _meshRenderer;
+    [SerializeField] private GameObject wisp;
 
-    private void Awake()
-    {
-        _meshRenderer = GetComponent<MeshRenderer>();
-    }
-
-    public void PlaceWisp (bool place) => _meshRenderer.enabled = place;
+    public void PlaceWisp (bool place) => wisp.SetActive(place);
 }

@@ -6,18 +6,31 @@ using UnityEngine;
 public class PuzzleManager : MonoBehaviour
 {
     [SerializeField] private PuzzleObjective[] _puzzleObjectives;
+    [SerializeField] private PuzzleCompleteBase[] _puzzleCompleteActions;
     public event EventHandler OnPuzzleStart;
-    public event EventHandler OnPuzzleSolved;
+    public static event EventHandler<PuzzleManager> OnPuzzleSolved;
 
     [SerializeField] private bool autoStart = true;
 
     private void Awake() {
-        foreach (PuzzleObjective objective in _puzzleObjectives) {
+        _puzzleObjectives = GetComponentsInChildren<PuzzleObjective>();
+        _puzzleCompleteActions = GetComponentsInChildren<PuzzleCompleteBase>();
+        
+        foreach (var objective in _puzzleObjectives) {
             objective.AssignPuzzleManager(this);
-            objective.OnObjectiveStatusChange += PuzzleObjective_OnObjectiveStatusChange;
         }
-        OnPuzzleStart += Self_PuzzleStarted;
-        OnPuzzleSolved += Self_PuzzleSolved;
+
+        foreach (var completeAction in _puzzleCompleteActions) {
+            completeAction.AssignPuzzleManager(this);
+        }
+    }
+
+    private void OnEnable() {
+        PuzzleObjective.OnObjectiveStatusChange += PuzzleObjective_OnObjectiveStatusChange;
+    }
+
+    private void OnDisable() {
+        PuzzleObjective.OnObjectiveStatusChange -= PuzzleObjective_OnObjectiveStatusChange;
     }
 
     private void Start() {
@@ -26,8 +39,10 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    private void PuzzleObjective_OnObjectiveStatusChange(object sender, bool status) {
-        if (status) CheckPuzzleSolved();
+    public void PuzzleObjective_OnObjectiveStatusChange(object sender, OnObjectStatusChangeArgs e) {
+        if (e.puzzleManager != this) return;
+
+        if (e.status) CheckPuzzleSolved();
     }
 
     private void CheckPuzzleSolved() {
@@ -36,16 +51,7 @@ public class PuzzleManager : MonoBehaviour
                 return;
             }
         }
-        OnPuzzleSolved?.Invoke(this, EventArgs.Empty);
+        OnPuzzleSolved?.Invoke(this, this);
     }
 
-    private void Self_PuzzleSolved(object sender, EventArgs e)
-    {
-        Debug.Log("Puzzle Solved");
-    }
-
-    private void Self_PuzzleStarted(object sender, EventArgs e)
-    {
-        Debug.Log("Puzzle Started");
-    }
 }
