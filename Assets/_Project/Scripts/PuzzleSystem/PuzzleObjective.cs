@@ -7,10 +7,18 @@ public class PuzzleObjective : MonoBehaviour
 {
 
     protected PuzzleManager _puzzleManager;
+    private PuzzleObjectiveActionBase[] _puzzleObjectiveActionBases;
     protected bool isActive;
     protected bool isCompleted;
 
     public static event EventHandler<OnObjectStatusChangeArgs> OnObjectiveStatusChange;
+
+    private void Awake() {
+        _puzzleObjectiveActionBases = GetComponentsInChildren<PuzzleObjectiveActionBase>();
+        foreach (var action in _puzzleObjectiveActionBases) {
+            action.AssingPuzzleObjective(this);
+        }
+    }
     
     private void OnEnable() {
         PuzzleManager.OnPuzzleSolved += PuzzleManager_OnPuzzleSolved;
@@ -31,7 +39,8 @@ public class PuzzleObjective : MonoBehaviour
         isCompleted = status;
         OnObjectiveStatusChange?.Invoke(this, new OnObjectStatusChangeArgs{
             status = status,
-            puzzleManager = _puzzleManager
+            puzzleManager = _puzzleManager,
+            puzzleObjective = this
         });
     }
     
@@ -56,4 +65,5 @@ public class OnObjectStatusChangeArgs: EventArgs
 {
     public bool status;
     public PuzzleManager puzzleManager;
+    public PuzzleObjective puzzleObjective;
 }

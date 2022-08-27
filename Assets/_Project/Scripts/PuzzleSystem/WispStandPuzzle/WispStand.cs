@@ -12,11 +12,9 @@ public class WispStand : InteractionWithKey
 
     protected bool hasWisp = false;
     protected PuzzleObjective _puzzleObjective;
-    protected WispStand_Feedback _feedback;
 
     protected virtual void Awake() {
         _puzzleObjective = GetComponent<PuzzleObjective>();
-        _feedback = GetComponentInChildren<WispStand_Feedback>();
     }
 
     private void OnEnable() {
@@ -43,7 +41,6 @@ public class WispStand : InteractionWithKey
         } else {
             OnWispStandDeactivated?.Invoke(this, EventArgs.Empty);
         }
-        _feedback.PlaceWisp(status);
         _puzzleObjective.ChangeObjectiveStatus(status);
     }
 
