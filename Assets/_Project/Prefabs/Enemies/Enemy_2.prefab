@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4832100051626821659}
   - component: {fileID: 4832100051626821653}
   - component: {fileID: 4832100051626821652}
+  - component: {fileID: 4702034275489876883}
   m_Layer: 0
   m_Name: Enemy_2
   m_TagString: Untagged
@@ -105,9 +106,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioList:
-  - audioName: Enemy Default
+  - audioName: enemy_idle
     audioType: 0
-  - audioName: Enemy Dead
+  - audioName: enemy_die
     audioType: 0
 --- !u!82 &4832100051626821652
 AudioSource:
@@ -205,6 +206,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!111 &4702034275489876883
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4832100051626821662}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 3fa402fc401990c42a8a109f2ca83ece, type: 2}
+  - {fileID: 7400000, guid: c3aff2f0dac2d2e4581dd0af97a0bc1c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1001 &4832100051271777404
 PrefabInstance:
   m_ObjectHideFlags: 0
