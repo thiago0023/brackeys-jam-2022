@@ -35,20 +35,20 @@ public class EnemyActions : CharacterSettings
     {
         if(e.enemy != this) return;
 
+        if(audioSourceFound)
+        {
+            AudioHandler.Instance.PlayAudio(audioList[1].audioType, audioList[1].audioName, false);
+        }
+
         StartCoroutine("ReloadDelay");
     }
 
     IEnumerator ReloadDelay()
     {
-        print(audioSourceFound);
-        if(audioSourceFound)
-        {
-            AudioHandler.Instance.PlayAudio(audioList[1].audioType, audioList[1].audioName, false);
-        }
-        print(audioList[1].audioName);
+
         enemyAnimation.Play("enemy_1_die");
         DisableEnemy();
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(0.8f);
         KillEnemy();
     }
 

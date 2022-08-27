@@ -5700,7 +5700,7 @@ MonoBehaviour:
   - name: enemy_wall
     clip: {fileID: 8300000, guid: 9af8e40c6c6eb7642a53c115c5d654c2, type: 3}
   - name: player_idle
-    clip: {fileID: 8300000, guid: a8a8c5f6b05d6db4d88b1252fc992683, type: 3}
+    clip: {fileID: 8300000, guid: f989b1c64c0e7db4ca024b2c4a4e4ad7, type: 3}
   - name: player_die
     clip: {fileID: 8300000, guid: 8ea42b1d692f83d419593b9eb5d3efed, type: 3}
   - name: wisps_idle
@@ -6722,6 +6722,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1440963218120033382, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
+      propertyPath: m_Volume
+      value: 0.04
+      objectReference: {fileID: 0}
     - target: {fileID: 1440963218120033384, guid: e70d2361454e97b42baa662b4dba9df3, type: 3}
       propertyPath: audioList.Array.size
       value: 2
