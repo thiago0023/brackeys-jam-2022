@@ -14,4 +14,10 @@ public abstract class InteractionByTrigger : InteractionBase
             Interact();
         }
     }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Player")) {
+            EndInteraction();
+        }
+    }
 }

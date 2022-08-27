@@ -4,9 +4,19 @@ using UnityEngine;
 using System;
 
 
-public class Hole : MonoBehaviour
+public class Hole : InteractionByTrigger
 {
-    private void OnTriggerEnter(Collider other)
+    public override void BeginInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void EndInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void Interact()
     {
         PlayerActions.KillPlayer?.Invoke();
     }

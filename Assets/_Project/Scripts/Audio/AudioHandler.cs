@@ -27,11 +27,6 @@ public class AudioHandler : Singleton<AudioHandler>
         var audio = audioStorage.GetAudio(audioName).clip;
         if(!audio) return;
 
-        print("type: " + audioType);
-        print("name: " + audioName);
-        print("loop: " + loop);
-        print("source: " + audioSource);
-
         var selectedAudioSource = SelectAudioSource(audioType, audioSource);
         SetAudioClip(selectedAudioSource, audio);
         SetAudioLoop(selectedAudioSource, loop);
