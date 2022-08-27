@@ -5,7 +5,7 @@ using System;
 
 public class PlayerStorage : MonoBehaviour
 {
-    public static event EventHandler OnIncreaseWisp;
+    public static event EventHandler<int> OnIncreaseWisp;
     public static event EventHandler OnDecreaseWisp;
     public static event EventHandler<OnAnyWispStandArgs> WispStand_OnIncreaseWispAmount;
     public static event EventHandler<OnAnyWispStandArgs> WispStand_OnDecreaseWispAmount;
@@ -25,12 +25,13 @@ public class PlayerStorage : MonoBehaviour
     {
         WispStand.OnAnyWispInteracted -= WispStand_OnStandInteracted;
         WispInteraction.OnInteracted -= WispInteraction_OnInteracted;
+        EnemyInteraction.OnInteract -= EnemyInteraction_OnInteract;
     }
 
-    private void IncreaseWispAmount(int amount)
+    private void IncreaseWispAmount(int amount, int lightIntensity = 0)
     {
         wispsAmount += amount;
-        OnIncreaseWisp?.Invoke(this, EventArgs.Empty);
+        OnIncreaseWisp?.Invoke(this, lightIntensity);
     }
 
     private bool TryDecreaseAmount(int amount)
@@ -72,9 +73,9 @@ public class PlayerStorage : MonoBehaviour
         return false;
     }
 
-    private void WispInteraction_OnInteracted(object sender, EventArgs e)
+    private void WispInteraction_OnInteracted(object sender, int intensityToAdd)
     {
-        IncreaseWispAmount(1);
+        IncreaseWispAmount(1, intensityToAdd);
     }
 
     private void EnemyInteraction_OnInteract(object sender, OnEnemyInteractArgs args)

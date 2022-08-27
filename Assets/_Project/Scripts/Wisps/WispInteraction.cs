@@ -7,7 +7,7 @@ public class WispInteraction : InteractionByTrigger
 {
     [SerializeField]
     private int addIntensity;
-    public static event EventHandler OnInteracted;
+    public static event EventHandler<int> OnInteracted;
 
     public override void BeginInteraction()
     {
@@ -27,7 +27,7 @@ public class WispInteraction : InteractionByTrigger
     public override void Interact()
     {
         Debug.Log(GetName());
-        OnInteracted?.Invoke(this, EventArgs.Empty);
+        OnInteracted?.Invoke(this, addIntensity);
         Destroy(this.gameObject);
     }
 }
