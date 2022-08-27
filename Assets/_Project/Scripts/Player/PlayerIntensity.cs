@@ -20,6 +20,7 @@ public class PlayerIntensity : MonoBehaviour
     {
         lightObject = GetComponentInChildren<Light>();
         DecreaseIntensity();
+        currenteDecreaseSpeed = decreaseSpeed;
     }
 
     void OnEnable()
