@@ -22,12 +22,14 @@ public class PlayerActions : CharacterSettings
     {
         KillPlayer += OnKillPlayer;
         PlayerStorage.PlayerAction_OnKillPlayer += PlayerStorage_OnKillPlayer;
+        PlayerIntensity.OnLightOff += PlayerIntensity_OnLightOff;
     }
 
     void OnDisable()
     {
         KillPlayer -= OnKillPlayer;
         PlayerStorage.PlayerAction_OnKillPlayer -= PlayerStorage_OnKillPlayer;
+        PlayerIntensity.OnLightOff -= PlayerIntensity_OnLightOff;
     }
 
     void OnKillPlayer()
@@ -54,6 +56,11 @@ public class PlayerActions : CharacterSettings
     }
 
     private void PlayerStorage_OnKillPlayer(object sender, System.EventArgs e)
+    {
+        OnKillPlayer();
+    }
+
+    private void PlayerIntensity_OnLightOff()
     {
         OnKillPlayer();
     }

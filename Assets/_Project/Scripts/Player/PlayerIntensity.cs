@@ -5,6 +5,7 @@ using System;
 
 public class PlayerIntensity : MonoBehaviour
 {
+    public static event Action OnLightOff;
     public static Action TurnOffLight;
     [SerializeField]
     private float decreaseSpeed;
@@ -13,7 +14,7 @@ public class PlayerIntensity : MonoBehaviour
     private float currenteDecreaseSpeed;
     private Light lightObject;
     private float luminositySteps = 0.06f;
-    private float intensityBySpotSize = 20f;
+    private float intensityBySpotSize = 10f;
     private bool isIncreasing = false;
     void Awake()
     {
@@ -77,9 +78,14 @@ public class PlayerIntensity : MonoBehaviour
         }
         else
         {
-            lightObject.enabled = false;
-            print("Player's Dead");
+            LightOff();
         }
+    }
+
+    private void LightOff()
+    {
+        lightObject.enabled = false;
+        OnLightOff?.Invoke();
     }
 
     private void PlayerStorage_OnIncreaseWisp(object sender, EventArgs e)
