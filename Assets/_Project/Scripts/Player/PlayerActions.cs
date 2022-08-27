@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class PlayerActions : MonoBehaviour
+public class PlayerActions : CharacterSettings
 {
     public static Action KillPlayer;
+    private Animation playeranimation;
+    private CapsuleCollider playercollider;
+    private Rigidbody playerrigidbody;
+    private PlayerMovement playerMovement;
+
+    protected void Awake() {
+        playeranimation = GetComponent<Animation>();
+        playercollider = GetComponent<CapsuleCollider>();
+        playerrigidbody = GetComponent<Rigidbody>();
+        playerMovement = GetComponent<PlayerMovement>();
+    }
 
     void OnEnable()
     {
         KillPlayer += OnKillPlayer;
+        PlayerStorage.PlayerAction_OnKillPlayer += PlayerStorage_OnKillPlayer;
+        PlayerIntensity.OnLightOff += PlayerIntensity_OnLightOff;
     }
 
     void OnDisable()
     {
         KillPlayer -= OnKillPlayer;
+        PlayerStorage.PlayerAction_OnKillPlayer -= PlayerStorage_OnKillPlayer;
+        PlayerIntensity.OnLightOff -= PlayerIntensity_OnLightOff;
     }
 
     void OnKillPlayer()
@@ -24,15 +39,29 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator ReloadDelay()
     {
-        PlayerIntensity.TurnOffLight?.Invoke();
-        var animation = GetComponent<Animation>();
-        var collider = GetComponent<CapsuleCollider>();
-        var rigidbody = GetComponent<Rigidbody>();
-        collider.enabled = false;
-        rigidbody.isKinematic = true;
-        print(animation);
-        animation.Play("playerDie");
+        DisablePlayer();
         yield return new WaitForSeconds(2f);
         SceneHandler.ReloadScene?.Invoke();
+    }
+
+    void DisablePlayer()
+    {
+        //TO DO mudar essa função para dentro do player intensity
+        PlayerIntensity.TurnOffLight?.Invoke();
+
+        playercollider.enabled = false;
+        playerMovement.enabled = false;
+        playerrigidbody.isKinematic = true;
+        playeranimation.Play("playerDie");
+    }
+
+    private void PlayerStorage_OnKillPlayer(object sender, System.EventArgs e)
+    {
+        OnKillPlayer();
+    }
+
+    private void PlayerIntensity_OnLightOff()
+    {
+        OnKillPlayer();
     }
 }

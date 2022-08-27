@@ -9,6 +9,8 @@ public class PlayerStorage : MonoBehaviour
     public static event EventHandler OnDecreaseWisp;
     public static event EventHandler<OnAnyWispStandArgs> WispStand_OnIncreaseWispAmount;
     public static event EventHandler<OnAnyWispStandArgs> WispStand_OnDecreaseWispAmount;
+    public static event EventHandler PlayerAction_OnKillPlayer;
+    public static event EventHandler<OnEnemyInteractArgs> EnemyActions_OnKillEnemy;
 
     [SerializeField]
     private int wispsAmount;
@@ -17,6 +19,7 @@ public class PlayerStorage : MonoBehaviour
     {
         WispStand.OnAnyWispInteracted += WispStand_OnStandInteracted;
         WispInteraction.OnInteracted += WispInteraction_OnInteracted;
+        EnemyInteraction.OnInteract += EnemyInteraction_OnInteract;
     }
     void OnDisable()
     {
@@ -72,5 +75,16 @@ public class PlayerStorage : MonoBehaviour
     private void WispInteraction_OnInteracted(object sender, EventArgs e)
     {
         IncreaseWispAmount(1);
+    }
+
+    private void EnemyInteraction_OnInteract(object sender, OnEnemyInteractArgs args)
+    {
+
+        if (wispsAmount > args.darknessAmount) {
+            EnemyActions_OnKillEnemy?.Invoke(this, args);
+        }
+        else {
+            PlayerAction_OnKillPlayer?.Invoke(this, EventArgs.Empty);
+        }
     }
 }

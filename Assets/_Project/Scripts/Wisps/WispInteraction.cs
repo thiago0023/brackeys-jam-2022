@@ -9,6 +9,16 @@ public class WispInteraction : InteractionByTrigger
     private int addIntensity;
     public static event EventHandler OnInteracted;
 
+    public override void BeginInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
+    public override void EndInteraction()
+    {
+        throw new NotImplementedException();
+    }
+
     public override string GetName()
     {
         return"Wisp Interaction";
