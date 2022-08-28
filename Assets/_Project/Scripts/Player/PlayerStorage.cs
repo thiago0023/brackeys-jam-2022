@@ -73,6 +73,7 @@ public class PlayerStorage : MonoBehaviour
 
     private void WispInteraction_OnInteracted(object sender, int intensityToAdd)
     {
+        AudioHandler.Instance.PlayAudio(enAudioType.SFX, "wisps_get", false);
         IncreaseWispAmount(1, intensityToAdd);
     }
 

@@ -429,7 +429,7 @@ MonoBehaviour:
   - name: wisps_idle
     clip: {fileID: 8300000, guid: 1218d8cfddc11ac4b88bcb67f07b6443, type: 3}
   - name: wisps_get
-    clip: {fileID: 8300000, guid: 1218d8cfddc11ac4b88bcb67f07b6443, type: 3}
+    clip: {fileID: 8300000, guid: 6e97386627311a147a42e0014c9ce81a, type: 3}
   - name: wisps_drop
     clip: {fileID: 8300000, guid: 1218d8cfddc11ac4b88bcb67f07b6443, type: 3}
   - name: bgs_default
