@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc0695d92586464dbaca9d01dd75d25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactRadius: 13.18
+  interactRadius: 8
   rotateSpeed: 2.25
   moveSpeed: 3
 --- !u!114 &4832100051626821658
