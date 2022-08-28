@@ -14,7 +14,7 @@ public class PlayerIntensity : MonoBehaviour
     private float currenteDecreaseSpeed;
     private Light lightObject;
     private float luminositySteps = 0.06f;
-    private float intensityBySpotSize = 10f;
+    private float intensityBySpotSize = 5f;
     private bool isIncreasing = false;
     void Awake()
     {
