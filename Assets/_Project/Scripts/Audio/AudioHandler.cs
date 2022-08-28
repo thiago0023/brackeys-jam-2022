@@ -12,14 +12,17 @@ public class AudioHandler : Singleton<AudioHandler>
     [SerializeField]
     private AudioSource sfxAudioSource;
     [SerializeField]
-    private AudioSettings audioSettings;
+    private List<AudioSettings> audioSettings;
     private AudioStorage audioStorage;
 
     // TEMP START
     private void Awake()
     {
         audioStorage = GetComponent<AudioStorage>();
-        PlayAudio(audioSettings.audioType, audioSettings.audioName);
+        foreach (var item in audioSettings)
+        {
+            PlayAudio(item.audioType, item.audioName);
+        }
     }
 
     public void PlayAudio(enAudioType audioType, string audioName, bool loop = true, AudioSource audioSource = null)
