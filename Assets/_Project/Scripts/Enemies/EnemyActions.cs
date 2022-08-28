@@ -45,7 +45,13 @@ public class EnemyActions : CharacterSettings
 
     IEnumerator ReloadDelay()
     {
-        enemyAnimation.Play("enemy_1_die");
+        try
+        {
+            print(enemyAnimation.Play("enemy_1_die"));
+            enemyAnimation.Play("enemy_1_die");
+        }catch{
+            print("inimigo não tem animação");
+        }
         
         DisableEnemy();
         yield return new WaitForSeconds(0.6f);

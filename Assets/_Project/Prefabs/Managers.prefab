@@ -221,7 +221,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -456,5 +456,7 @@ MonoBehaviour:
   bgsAudioSource: {fileID: 3906176239062807756}
   sfxAudioSource: {fileID: 3906176239062807759}
   audioSettings:
-    audioName: music_default
+  - audioName: music_default
     audioType: 2
+  - audioName: bgs_default
+    audioType: 1
