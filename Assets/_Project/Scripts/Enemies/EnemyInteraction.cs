@@ -30,12 +30,12 @@ public class EnemyInteraction : InteractionByTrigger
 
     public override void BeginInteraction()
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 
     public override void EndInteraction()
     {
-        throw new NotImplementedException();
+        // throw new NotImplementedException();
     }
 }
 
