@@ -37,7 +37,7 @@ public class EnemyActions : CharacterSettings
 
         if(audioSourceFound)
         {
-            AudioHandler.Instance.PlayAudio(audioList[1].audioType, audioList[1].audioName, false, audioSource);
+            AudioHandler.Instance.PlayAudio(audioList[1].audioType, audioList[1].audioName, false);
         }
 
         StartCoroutine("ReloadDelay");
