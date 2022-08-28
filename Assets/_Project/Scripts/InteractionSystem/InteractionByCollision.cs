@@ -14,4 +14,10 @@ public abstract class InteractionByCollision : InteractionBase
             Interact();
         }
     }
+
+    private void OnCollisionExit(Collision other) {
+        if (other.gameObject.tag == "Player") {
+            EndInteraction();
+        }
+    }
 }
