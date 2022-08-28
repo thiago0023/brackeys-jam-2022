@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/The_Viking_Village.unity
-    guid: 00000000000000000000000000000000
+    path: Assets/_Project/Scenes/MainMenu.unity
+    guid: 0f1e5dc07d87fbb43ab0c0ccfd1fca04
+  - enabled: 1
+    path: Assets/_Project/Scenes/world map.unity
+    guid: c32852a7fcc10d04f913e4956384f221
   m_configObjects: {}
